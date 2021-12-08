@@ -18,6 +18,9 @@ public class StartPage {
 
     public MailPage mailClick(){
         driver.findElement(mailEnter).click();
+         for (String tab: driver.getWindowHandles()) {
+             driver.switchTo().window(tab);
+         }
         return new MailPage(driver);
     }
 }
