@@ -29,7 +29,7 @@ public class MailPage {
         return this;
     }
 
-    public MailPage writeTeme(String theme){
+    public MailPage writeTheme(String theme){
         driver.findElement(themeField).sendKeys(theme);
         return this;
     }
