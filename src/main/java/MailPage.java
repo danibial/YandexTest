@@ -1,12 +1,18 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MailPage {
     private WebDriver driver;
 
+    WebDriverWait wait = new WebDriverWait(this.driver, 10);
+
     public MailPage(WebDriver driver){
         this.driver = driver;
     }
+
 
     private By writeButton = By.xpath("//a[@title='Написать (w, c)']");
     private By attachButton = By.xpath("//input[@type='file']");
@@ -30,7 +36,8 @@ public class MailPage {
     }
 
     public MailPage writeTheme(String theme){
-        driver.findElement(themeField).sendKeys(theme);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(themeField));
+        driver.findElement((By) element).sendKeys(theme);
         return this;
     }
 
